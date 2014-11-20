@@ -1,4 +1,4 @@
-Ghost-in-the-shell
+Ghost-in-the-Shell
 ==================
 
 Here is my past work on shell script
