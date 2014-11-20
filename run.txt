@@ -1,0 +1,1 @@
+./useradd.sh -P /etc/passwd -S /etc/shadow -G /etc/group -p 'sjobs:x:1231:106:Steven_Jobs,,,:/home/heads/sjobs:/bin/ksh' -s 'sjobs:$6$.R/mk/Uv$7b.9w/5W4exX3kGRPR5gC63fPEqgzEKyBRXogMJ.WANpszWvcB4z..PHDL3M4FXnBjlzpQJYzHXw92HUtwm3Y0:6445:0:0:0:0:0:0'
