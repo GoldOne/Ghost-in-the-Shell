@@ -3,9 +3,14 @@ The simplest ciphers
 
 The simplest substitution ciphers are where each letter in the alphabet is replaced by another letter in the alphabet. Thus, for example, the mapping below defines a shift cipher, where the substituted elements are related by a shift from the original (by thretters). Thus a  d, b  e, etc.
 
-a|b|c|d|e|f|g|h|i|j|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
----|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
-d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|a|b|c
+<table>
+    <tr>
+<td>a</td><td>b</td><td>c</td><td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z</td>
+    </tr>
+      <tr>
+<td>d</td><td>e</td><td>f</td><td>g</td><td>h</td><td>i</td><td>j</td><td>k</td><td>l</td><td>m</td><td>n</td><td>o</td><td>p</td><td>q</td><td>r</td><td>s</td><td>t</td><td>u</td><td>v</td><td>w</td><td>x</td><td>y</td><td>z</td><td>a</td><td>b</td><td>c</td>
+    </tr>
+</table>
 
 Your task is to implement, in a BASH shell script `SubCip.sh`, a substitution cipher with the following specifications.
 
@@ -22,20 +27,3 @@ For decryption the resverse subtitution should occur.
 The cipher acts only on lower case, both in the input file and in the key. Thus, in particular, any upper case letters are ignored.
 
 
-a|b|c|d|e|f|g|h|i|j|h|j|k|l|m|n|o
----|--|---|---|---|---|---|---|---|---|---|---|---|---|---|---|----
-a    | b    | cd    | e  d    | e  dd    | e  d    | e  d    | e|e  d    | e  d    | e   | e  d    | e  d  | e|sd|df|  
-d    | e    | f
-g    | h    | i
-
-<table>
-    <tr>
-        <td>a</td>
-    </tr>
-      <tr>
-        <td>b</td>
-    </tr>
-</table>
-| a | b | c |
-|--|--|--|
-| d | e | f |
