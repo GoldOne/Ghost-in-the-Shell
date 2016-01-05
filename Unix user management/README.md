@@ -5,13 +5,17 @@ Unix stores account information in 2 files. These files are the password file `/
 **Your script MUST take the following arguments:**
 
 `-P` to specify the name of the password file to update.
+
 `-S` to specify the name of the shadow file to update.
+
 `-G` to specify the group file to consult.
 
 **Such arguments MAY be followed with:**
 
 `-p` to specify the new entry to be added to the password file.
+
 `-s `to specify the entry to be added to the shadow password file
+
 
 Typical usage would be:
 
@@ -27,6 +31,7 @@ If the `–p` and `–s` arguments are omitted then your program should prompt f
 file. In the order it appears in the password and shadow file formats.
 
 Such a usage would yield:
+
 `$ useradd.py -P ./passwd -S ./shadow –G ./groups`
 
 `Enter username:`
