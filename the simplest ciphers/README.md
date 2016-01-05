@@ -7,11 +7,14 @@ The simplest substitution ciphers are where each letter in the alphabet is repla
 |d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|a|b|c|
 Your task is to implement, in a BASH shell script SubCip.sh, a substitution cipher with the following specifications.
 
-*The command line usage should be:
+* The command line usage should be:
         `SubCip.sh <mode> <keyword> <inputfile> > <outputfile>`
         
-*You should add appropriate error checking on the input.
-*The`<mode> ` should be ` -e` for encryption, and `-d` for decryption.
-*The`<keyword>` is any list of lowercase letters. The usage is as follows.
+* You should add appropriate error checking on the input.
+* The`<mode> ` should be ` -e` for encryption, and `-d` for decryption.
+* The`<keyword>` is any list of lowercase letters. The usage is as follows.
 For encryption, the ith letter of the alphabet is mapped to the ith distinct letter of . The remaining letters in the alphabet are mapped, in alphabetical order, to the alphabetical list of letters not in the keyword. Thus, for example, if the keyword is “cabbage”, the following mapping should be implemented.
+
+For decryption the resverse subtitution should occur.
+
 The cipher acts only on lower case, both in the input file and in the key. Thus, in particular, any upper case letters are ignored.
