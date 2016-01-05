@@ -11,9 +11,6 @@ Here is my past work on shell script
   Subcip.sh
   
 
-
-
-
 2. Unix user management
 
  Filelist
