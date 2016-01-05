@@ -24,3 +24,4 @@ The cipher acts only on lower case, both in the input file and in the key. Thus,
 a|b|c
 -|-|-
 a|b|c
+a|b|c
