@@ -22,8 +22,8 @@ For decryption the resverse subtitution should occur.
 The cipher acts only on lower case, both in the input file and in the key. Thus, in particular, any upper case letters are ignored.
 
 
-a|b|c
------|------|----
+a|b|c|d|e|f|g|h|i|j|h|j|k|l|m|n|o|p|q|r|s|t
+---|--|---|---|---|---|---|---|---|---|---|---|---|---|---|---|----
 a    | b    | c
 d    | e    | f
 g    | h    | i
