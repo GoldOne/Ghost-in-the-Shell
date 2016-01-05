@@ -6,6 +6,7 @@ The simplest substitution ciphers are where each letter in the alphabet is repla
 a|b|c|d|e|f|g|h|i|j|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z
 ---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---
 d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|a|b|c
+
 Your task is to implement, in a BASH shell script `SubCip.sh`, a substitution cipher with the following specifications.
 
 * The command line usage should be:
