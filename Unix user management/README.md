@@ -2,31 +2,40 @@ Unix user Management
 ==================
 Unix stores account information in 2 files. These files are the password file `/etc/passwd`, and the shadow file `/etc/shadow.` Each user belongs to a group with this information being stored in `/etc/group.` Refer to the man pages for the purpose and format of these files. To successfully add a user, a line must be added to the password and shadow files. Because of the importance of these files to the systems operation, any production quality script should ensure that they are not corrupted by any circumstances during an update.
 
-_Your script MUST take the following arguments:_
+**Your script MUST take the following arguments:**
 `-P` to specify the name of the password file to update.
 `-S` to specify the name of the shadow file to update.
 `-G` to specify the group file to consult.
 
-_Such arguments MAY be followed with:_
+**Such arguments MAY be followed with:**
 `-p` to specify the new entry to be added to the password file.
 `-s `to specify the entry to be added to the shadow password file
 
 Typical usage would be:
 `useradd.py -P ./passwd -S ./shadow –G ./group –p \`
+
 `'sjobs:x:1231:106:Steven Jobs,,,:/home/heads/sjobs:/bin/ksh' \`
+
 `-s 'sjobs:`
 `$6$.R/mk/Uv$7b.9w/5W4exX3kGRPR5gC63fPEqgzEKyBRXogMJ.WANpszWvcB4z..PHDL3M4`
 `FXnBjlzpQJYzHXw92HUtwm3Y0:6445:0:0:0:0:0:0'`
+
 If the `–p` and `–s` arguments are omitted then your program should prompt for each attribute of the password
 file. In the order it appears in the password and shadow file formats.
 
 Such a usage would yield:
 `$ useradd.py -P ./passwd -S ./shadow –G ./groups`
+
 `Enter username:`
+
 `Enter Password:`
+
 `Enter Userid:`
+
 `Enter Primary Groupid:`
+
 `. . .`
+
 Remember you may also use `/etc/passwd` and `/etc/shadow `as files for the above options. You should test that your account work.
 
 For the shadow file there is no need to prompt for the username and password again. You can set the values for the remainder fields in this file by using default values, except in the case where you should calculate epoch time of change. Make sure the values you select as defaults are sensible.
@@ -49,13 +58,28 @@ Basically you need to ensure your script is secure enough so it can be run setui
 Lastly in some circumstances you will have to make decisions. For example lets say a home directory is specified that already exists and belongs to another user. What should you do here? This is a design decision – normally you would terminate with an error. What if the home directory does not exist? You would have to create it right? but also ensure the permissions are correct… If I were Steve Jobs I would be unhappy if the default umask allowed everyone to read my directory. You will also need to think about concurrency. All directories should be under /home – this is the norm.
 
 
-Normally when we create accounts we create them as part of a pipeline. Pretend you work at a organisation whereby there is a flow of data nightly from a web server. The web server is protected with a username of admin and password both. In this authenticated area you can download a file called users.txt which has all active users. Users are keyed by their username and this information is guaranteed to be consistent. The file has records in the following
+Normally when we create accounts we create them as part of a pipeline. Pretend you work at a organisation whereby there is a flow of data nightly from a web server. The web server is protected with a username of admin and password both.
+
+In this authenticated area you can download a file called users.txt which has all active users. Users are keyed by their username and this information is guaranteed to be consistent. The file has records in the following
 form:
-dfs:Daniel Saffioti,,,:106:abcdefg2
+
+
+`dfs:Daniel Saffioti,,,:106:abcdefg2`
+
+
 The colon delimetered fields represent username, name and GECOS information, primary group identifier and initial password. You can assume the group already exists in the appropriate files.
-Your job is to write a script called bulk_process.[pl|py|sh[ which gets this file from a web server.
-When the file is downloaded, the script should go through and check to see if there are any new users which do not have accounts in /etc/password & /etc/shadow – use the key. If this is the case it should create them using the script from useradd.sh. You can assume all accounts created through this means have their home directory in /home.
-If however there is a user in /etc/password and /etc/shadow but they do not appear in this
-downloaded file, it means they have left. If this is the case, archive their home directory into a gzipped tarball and place it in a directory called /usr/local/archives (you will need to create the directory). Once archived delete the account and its home directory.
+
+
+Your job is to write a script called `bulk_process.[pl|py|sh]` which gets this file from a web server.
+
+When the file is downloaded, the script should go through and check to see if there are any new users which do not have accounts in `/etc/password `& `/etc/shadow` – use the key. If this is the case it should create them using the script from `useradd.sh.` You can assume all accounts created through this means have their home directory in `/home`.
+
+
+If however there is a user in `/etc/password` and `/etc/shadow `but they do not appear in this
+downloaded file, it means they have left. If this is the case, archive their home directory into a gzipped tarball and place it in a directory called `/usr/local/archives `(you will need to create the directory). Once archived delete the account and its home directory.
+
+
 Another circumstance that needs to be considered is a change in name – you will need to compare accounts already in existence to this data set to see if names are changing. If the name differ change the information in the appropriate password files.
-You are to document in the header of this program the command you use to get your job scheduler i.e. cron to execute this task daily (every day of the year).
+
+
+You are to document in the header of this program the command you use to get your job scheduler i.e.` cron` to execute this task daily (every day of the year).
