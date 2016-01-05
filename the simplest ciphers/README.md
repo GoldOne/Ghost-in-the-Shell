@@ -28,7 +28,11 @@ a    | b    | cd    | e  d    | e  dd    | e  d    | e  d    | e|e  d    | e  d 
 d    | e    | f
 g    | h    | i
 
-
+<table>
+    <tr>
+        <td>Foo</td>
+    </tr>
+</table>
 | a | b | c |
 |--|--|--|
 | d | e | f |
