@@ -1,40 +1,53 @@
 Unix user Management
 ==================
-Unix stores account information in 2 files. These files are the password file /etc/passwd, and the shadow file /etc/shadow. Each user belongs to a group with this information being stored in /etc/group. Refer to the man pages for the purpose and format of these files. To successfully add a user, a line must be added to the password and shadow files. Because of the importance of these files to the systems operation, any production quality script should ensure that they are not corrupted by any circumstances during an update.
-Your script MUST take the following arguments:
--P to specify the name of the password file to update.
--S to specify the name of the shadow file to update.
--G to specify the group file to consult.
-Such arguments MAY be followed with:
--p to specify the new entry to be added to the password file.
--s to specify the entry to be added to the shadow password file
+Unix stores account information in 2 files. These files are the password file `/etc/passwd`, and the shadow file `/etc/shadow.` Each user belongs to a group with this information being stored in `/etc/group.` Refer to the man pages for the purpose and format of these files. To successfully add a user, a line must be added to the password and shadow files. Because of the importance of these files to the systems operation, any production quality script should ensure that they are not corrupted by any circumstances during an update.
+
+_Your script MUST take the following arguments:_
+`-P` to specify the name of the password file to update.
+`-S` to specify the name of the shadow file to update.
+`-G` to specify the group file to consult.
+
+_Such arguments MAY be followed with:_
+`-p` to specify the new entry to be added to the password file.
+`-s `to specify the entry to be added to the shadow password file
+
 Typical usage would be:
-useradd.py -P ./passwd -S ./shadow –G ./group –p \
-'sjobs:x:1231:106:Steven Jobs,,,:/home/heads/sjobs:/bin/ksh' \
--s 'sjobs:
-$6$.R/mk/Uv$7b.9w/5W4exX3kGRPR5gC63fPEqgzEKyBRXogMJ.WANpszWvcB4z..PHDL3M4
-FXnBjlzpQJYzHXw92HUtwm3Y0:6445:0:0:0:0:0:0'
-If the –p and –s arguments are omitted then your program should prompt for each attribute of the password
+`useradd.py -P ./passwd -S ./shadow –G ./group –p \`
+`'sjobs:x:1231:106:Steven Jobs,,,:/home/heads/sjobs:/bin/ksh' \`
+`-s 'sjobs:`
+`$6$.R/mk/Uv$7b.9w/5W4exX3kGRPR5gC63fPEqgzEKyBRXogMJ.WANpszWvcB4z..PHDL3M4`
+`FXnBjlzpQJYzHXw92HUtwm3Y0:6445:0:0:0:0:0:0'`
+If the `–p` and `–s` arguments are omitted then your program should prompt for each attribute of the password
 file. In the order it appears in the password and shadow file formats.
+
 Such a usage would yield:
-$ useradd.py -P ./passwd -S ./shadow –G ./groups
-Enter username:
-Enter Password:
-Enter Userid:
-Enter Primary Groupid:
-. . .
-Remember you may also use /etc/passwd and /etc/shadow as files for the above options. You should test that your account work.
-For the shadow file there is no need to prompt for the username and password again. You can set the values for the remainder fields in this file by using default values, except in the case where you should calculate epoch time of change. Make sure the values you select as defaults are sensible. Your code should extract the arguments using getopt methods and check for their validity. Print an appropriate error message and exit if not. Next your code must update both the files specified by appending the entries onto the END of the files – you can assume group information is up to date i.e. you don’t need to add groups. This is the hard part. In order to do this properly you should;
-1. Check the validity of the username, uid and gid.
-2. Check to see if the files that are being updated exist and are in valid form.
-3. Check the supplied values for shell and home directory.
-4. Lock all files whilst updating them – using file locking.
-5. Check for I/O faults and other kinds of exceptions.
-6. Manage any temporary files used and ensure files created have appropriate permissions.
-7. Handle signals correctly e.g. SIGINT (interrupt).
+`$ useradd.py -P ./passwd -S ./shadow –G ./groups`
+`Enter username:`
+`Enter Password:`
+`Enter Userid:`
+`Enter Primary Groupid:`
+`. . .`
+Remember you may also use `/etc/passwd` and `/etc/shadow `as files for the above options. You should test that your account work.
+
+For the shadow file there is no need to prompt for the username and password again. You can set the values for the remainder fields in this file by using default values, except in the case where you should calculate epoch time of change. Make sure the values you select as defaults are sensible.
+
+Your code should extract the arguments using getopt methods and check for their validity. Print an appropriate error message and exit if not.
+
+Next your code must update both the files specified by appending the entries onto the END of the files – you can assume group information is up to date i.e. you don’t need to add groups. This is the hard part. In order to do this properly you should
+
+1.  Check the validity of the username, uid and gid.
+2.  Check to see if the files that are being updated exist and are in valid form.
+3.  Check the supplied values for shell and home directory.
+4.  Lock all files whilst updating them – using file locking.
+5.  Check for I/O faults and other kinds of exceptions.
+6.  Manage any temporary files used and ensure files created have appropriate permissions.
+7.  Handle signals correctly e.g. SIGINT (interrupt).
+
 Basically you need to ensure your script is secure enough so it can be run setuid root. In the event of an error generated by any of the above conditions you should back out gracefully. That is the data files should not be corrupted.
 
+
 Lastly in some circumstances you will have to make decisions. For example lets say a home directory is specified that already exists and belongs to another user. What should you do here? This is a design decision – normally you would terminate with an error. What if the home directory does not exist? You would have to create it right? but also ensure the permissions are correct… If I were Steve Jobs I would be unhappy if the default umask allowed everyone to read my directory. You will also need to think about concurrency. All directories should be under /home – this is the norm.
+
 
 Normally when we create accounts we create them as part of a pipeline. Pretend you work at a organisation whereby there is a flow of data nightly from a web server. The web server is protected with a username of admin and password both. In this authenticated area you can download a file called users.txt which has all active users. Users are keyed by their username and this information is guaranteed to be consistent. The file has records in the following
 form:
