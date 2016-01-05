@@ -30,7 +30,10 @@ g    | h    | i
 
 <table>
     <tr>
-        <td>Foo</td>
+        <td>a</td>
+    </tr>
+      <tr>
+        <td>b</td>
     </tr>
 </table>
 | a | b | c |
