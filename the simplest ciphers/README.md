@@ -27,3 +27,7 @@ a|b|c|d|e|f|g|h|i|j|h|j|k|l|m|n|o
 a    | b    | cd    | e  d    | e  dd    | e  d    | e  d    | e|e  d    | e  d    | e   | e  d    | e  d  | e|sd|df|  
 d    | e    | f
 g    | h    | i
+
+| Item      |    Value | Qty  |
+| :-------- | --------:| :--: |
+| Computer  | 1600 USD |  5   |
