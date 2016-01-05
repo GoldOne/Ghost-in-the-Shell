@@ -3,15 +3,18 @@ Unix user Management
 Unix stores account information in 2 files. These files are the password file `/etc/passwd`, and the shadow file `/etc/shadow.` Each user belongs to a group with this information being stored in `/etc/group.` Refer to the man pages for the purpose and format of these files. To successfully add a user, a line must be added to the password and shadow files. Because of the importance of these files to the systems operation, any production quality script should ensure that they are not corrupted by any circumstances during an update.
 
 **Your script MUST take the following arguments:**
+
 `-P` to specify the name of the password file to update.
 `-S` to specify the name of the shadow file to update.
 `-G` to specify the group file to consult.
 
 **Such arguments MAY be followed with:**
+
 `-p` to specify the new entry to be added to the password file.
 `-s `to specify the entry to be added to the shadow password file
 
 Typical usage would be:
+
 `useradd.py -P ./passwd -S ./shadow –G ./group –p \`
 
 `'sjobs:x:1231:106:Steven Jobs,,,:/home/heads/sjobs:/bin/ksh' \`
