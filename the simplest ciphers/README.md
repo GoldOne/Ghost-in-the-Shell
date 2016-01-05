@@ -2,7 +2,7 @@ The simplest ciphers
 ==================
 
 The simplest substitution ciphers are where each letter in the alphabet is replaced by another letter in the alphabet. Thus, for example, the mapping below defines a shift cipher, where the substituted elements are related by a shift from the original (by thretters). Thus a  d, b  e, etc.
-|--|--|--|--|--|--|
+| :-------- | --------:| :--: |-|--|--|
 |a|b|c|d|e|f|g|h|i|j|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|
 |d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|a|b|c|
 Your task is to implement, in a BASH shell script SubCip.sh, a substitution cipher with the following specifications.
