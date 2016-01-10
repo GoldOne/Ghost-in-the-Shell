@@ -19,30 +19,30 @@ Unix stores account information in 2 files. These files are the password file `/
 
 Typical usage would be:
 ```python
-`useradd.py -P ./passwd -S ./shadow –G ./group –p \`
+useradd.py -P ./passwd -S ./shadow –G ./group –p \
 
-`'sjobs:x:1231:106:Steven Jobs,,,:/home/heads/sjobs:/bin/ksh' \`
+'sjobs:x:1231:106:Steven Jobs,,,:/home/heads/sjobs:/bin/ksh' \
 
-`-s 'sjobs:`
-`$6$.R/mk/Uv$7b.9w/5W4exX3kGRPR5gC63fPEqgzEKyBRXogMJ.WANpszWvcB4z..PHDL3M4`
-`FXnBjlzpQJYzHXw92HUtwm3Y0:6445:0:0:0:0:0:0'`
+-s 'sjobs:
+$6$.R/mk/Uv$7b.9w/5W4exX3kGRPR5gC63fPEqgzEKyBRXogMJ.WANpszWvcB4z..PHDL3M4
+FXnBjlzpQJYzHXw92HUtwm3Y0:6445:0:0:0:0:0:0'
 ```
 If the `–p` and `–s` arguments are omitted then your program should prompt for each attribute of the password
 file. In the order it appears in the password and shadow file formats.
 
 Such a usage would yield:
 ```python
-`$ useradd.py -P ./passwd -S ./shadow –G ./groups`
+$ useradd.py -P ./passwd -S ./shadow –G ./groups
 
-`Enter username:`
+Enter username:
 
-`Enter Password:`
+Enter Password:
 
-`Enter Userid:`
+Enter Userid:
 
-`Enter Primary Groupid:`
+Enter Primary Groupid:
 
-`. . .`
+. . .
 ```
 Remember you may also use `/etc/passwd` and `/etc/shadow `as files for the above options. You should test that your account work.
 
