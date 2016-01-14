@@ -1,7 +1,7 @@
 The simplest ciphers
 ==================
 
-The simplest substitution ciphers are where each letter in the alphabet is replaced by another letter in the alphabet. Thus, for example, the mapping below defines a shift cipher, where the substituted elements are related by a shift from the original (by thretters). Thus a \rightarrow d, b \rightarrow e, etc.
+The simplest substitution ciphers are where each letter in the alphabet is replaced by another letter in the alphabet. Thus, for example, the mapping below defines a shift cipher, where the substituted elements are related by a shift from the original (by thretters). Thus a \rightarrow d, b \rightarrow e, etc.  x^{y^z}=(1+{\rm e}^x)^{-2xy^w}
 
 <table>
     <tr>
