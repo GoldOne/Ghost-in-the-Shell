@@ -15,8 +15,9 @@ The simplest substitution ciphers are where each letter in the alphabet is repla
 Your task is to implement, in a BASH shell script `SubCip.sh`, a substitution cipher with the following specifications.
 
 * The command line usage should be:
-        `SubCip.sh <mode> <keyword> <inputfile> > <outputfile>`
-        
+```shell
+        SubCip.sh <mode> <keyword> <inputfile> > <outputfile>
+```        
 * You should add appropriate error checking on the input.
 * The`<mode> ` should be ` -e` for encryption, and `-d` for decryption.
 * The`<keyword>` is any list of lowercase letters. The usage is as follows.
